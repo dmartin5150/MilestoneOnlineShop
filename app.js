@@ -2,7 +2,9 @@ const path = require("path");
 
 const express = require("express");
 const csrf = require('csurf');
+const expressSession = require('express-session');
 
+const createSessionConfig = require('./config/session');
 const db = require("./data/database");
 
 const addCsrfTokenMiddleware = require('./middlewares/csrf-token');
@@ -16,6 +18,9 @@ app.set("views", path.join(__dirname, "views")); //where to find views
 
 app.use(express.static("public"));
 app.use(express.urlencoded({extended: false}));
+
+const sessionConfig = createSessionConfig();
+app.use(expressSession(sessionConfig));
 
 app.use(csrf());
 
