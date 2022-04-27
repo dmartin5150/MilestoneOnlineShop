@@ -21,7 +21,7 @@ async function signup(req, res) {
 
 function getLogin(req, res) {
 
-  res.render('customer/auth/signup');
+  res.render('customer/auth/login');
 }
 
 async function login(req, res) {
@@ -49,4 +49,5 @@ module.exports = {
   getSignUp: getSignUp,
   getLogin: getLogin,
   signup: signup,
+  login: login
 };

@@ -3,7 +3,7 @@ const express = require('express');
 
 const router = express.Router();
 
-route.get('/products', function(req, res) {
+router.get('/products', function(req, res) {
   res.render('customer/products/all-products');
 });
 
