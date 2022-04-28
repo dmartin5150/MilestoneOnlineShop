@@ -4,7 +4,7 @@ function isEmpty(value) {
 
 function userCredentialsAreValid(email, password) {
   return  email &&
-  email.include("@") &&
+  email.includes("@") &&
   password &&
   password.trim().length > 5
 }
