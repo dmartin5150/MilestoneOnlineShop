@@ -21,6 +21,7 @@ app.set("view engine", "ejs"); //use ejs
 app.set("views", path.join(__dirname, "views")); //where to find views
 
 app.use(express.static("public"));
+app.use('/products/assets',express.static('product-data'));
 app.use(express.urlencoded({extended: false}));
 
 const sessionConfig = createSessionConfig();
