@@ -1,3 +1,4 @@
+const removeUploadedFiles = require('multer/lib/remove-uploaded-files');
 const Product = require('../models/product.model');
 
 
@@ -34,9 +35,24 @@ async function createNewProduct(req, res,next) {
 }
 
 
+async function getUpdateProduct(req, res, next) {
+  try {
+  const product = await Product.findById(req.params.id);
+  res.render('admin/products/update-product',{product:product})
+  } catch(error) {
+    next(error);
+  }
+}
+
+
+function updateProduct() {
+
+}
 
 module.exports = {
   getProducts: getProducts,
   getNewProduct: getNewProduct,
-  createNewProduct: createNewProduct
+  createNewProduct: createNewProduct,
+  getUpdateProduct: getUpdateProduct,
+  updateProduct: updateProduct
 }
