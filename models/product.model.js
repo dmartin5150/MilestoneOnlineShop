@@ -76,6 +76,11 @@ class Product {
     this.updateImageData();
   }
 
+  remove() {
+    const productId = new mongodb.ObjectId(this.id);
+    db.getDb().collection('products').deleteOne({_id: productId });
+  }
+
 }
 
 module.exports = Product;
