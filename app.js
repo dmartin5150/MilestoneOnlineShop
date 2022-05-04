@@ -16,6 +16,7 @@ const authRoutes = require("./routes/auth.routes");
 const productsRoutes = require('./routes/product.routes');
 const baseRoutes = require('./routes/base.routes');
 const adminRoutes = require('./routes/admin.routes');
+const cartRoutes = require('./routes/carts.routes');
 
 app = express();
 
@@ -25,6 +26,7 @@ app.set("views", path.join(__dirname, "views")); //where to find views
 app.use(express.static("public"));
 app.use('/products/assets',express.static('product-data'));
 app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
 const sessionConfig = createSessionConfig();
 app.use(expressSession(sessionConfig));
@@ -37,8 +39,10 @@ app.use(checkAuthStatus);
 app.use(baseRoutes);
 app.use(authRoutes);
 app.use(productsRoutes);
+app.use('/cart',cartRoutes);
 app.use(protectRoutesMiddleware);
 app.use('/admin',adminRoutes);
+
 
 app.use(errorHandlerMiddlware);
 

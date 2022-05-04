@@ -12,10 +12,12 @@ class Cart {
       totalPrice: product.price
     }
 
+
     for (let i=0; i < this.items.length; i++){
       const item = this.items[i];
       if(item.product.id === product.id) {
         cartItem.quantity = cartItem.quantity + 1;
+        console.log(cartItem.quantity)
         cartItem.totalPrice = cartItem.totalPrice + product.price;
         this.items[i] = cartItem;
         this.totalQuantity++;
@@ -24,7 +26,8 @@ class Cart {
 
       }
     }
-    this.item.push(product);
+    this.items.push(cartItem);
+
     this.totalQuantity++;
     this.totalPrice += product.price;
 
