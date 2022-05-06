@@ -40,10 +40,10 @@ class Cart {
         const cartItem = {...item};
         const quantityChange = newQuantity - item.quantity;
         cartItem.quantity = newQuantity;
-        cartItem.totalPrice = newQuantity * product.price;
+        cartItem.totalPrice = newQuantity * item.product.price;
         this.items[i] = cartItem;
-        this.totalQuantity= this.quantity + quantityChange;
-        this.totalPrice += quantityChange * product.price;
+        this.totalQuantity= this.totalQuantity + quantityChange;
+        this.totalPrice += quantityChange * item.product.price;
         return {updatedItemPrice:cartItem.totalPrice};
 
       } else if(item.product.id === productId && newQuantity <= 0) {
